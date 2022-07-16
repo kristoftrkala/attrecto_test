@@ -73,7 +73,7 @@ namespace Attrecto.Controllers
                 throw new ArgumentException("This email is already in use.");
             }
             var mappedUser = _mapper.Map<User>(addUserDto);
-            mappedUser.Password = "temp";
+            mappedUser.Password = PasswordGenerator.Generate();
             await _userRepository.CreateUserAsync(mappedUser);
             await _userRepository.SaveChangesAsync();
             return Ok();
