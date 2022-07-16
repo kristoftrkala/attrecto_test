@@ -9,6 +9,8 @@ namespace Attrecto
         public MappingProfile()
         {
             CreateMap<CreateUserDto, User>();
+            CreateMap<AddUserDto, User>();
+            CreateMap<User, GetUserDto>();
         }
     }
 }

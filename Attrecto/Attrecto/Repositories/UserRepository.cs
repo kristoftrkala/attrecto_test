@@ -34,9 +34,13 @@ namespace Attrecto.Repositories
             await _context.Users.AddAsync(user);
         }
 
-        public void DeleteUser(User user)
+        public void DeleteUser(int id)
         {
-            _context.Users.Remove(user);
+            var user = _context.Users.FirstOrDefault(x => x.IdUser == id);
+            if (user != null)
+                _context.Users.Remove(user);
+            else
+                throw new ArgumentException("User not found");
         }
 
         public async Task SaveChangesAsync()

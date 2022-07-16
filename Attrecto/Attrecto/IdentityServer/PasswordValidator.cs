@@ -31,6 +31,7 @@ namespace Attrecto.IdentityServer
                         claims: new Claim[]
                         {
                             new Claim(JwtClaimTypes.Email, user.Email),
+                            new Claim(JwtClaimTypes.Id, user.IdUser.ToString()),
                             new Claim("role", user.FkRoleNavigation.Name)
                         });
 
