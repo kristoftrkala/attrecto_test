@@ -20,5 +20,7 @@ jobs:
       working-directory: ./Attrecto
     - name: Build
       run: dotnet build --no-restore
+      working-directory: ./Attrecto
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      working-directory: ./Attrecto
