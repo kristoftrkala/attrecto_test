@@ -1,5 +1,5 @@
 ﻿using Attrecto.Data;
-using Attrecto.Dtos;
+using Attrecto.Dtos.User;
 using AutoMapper;
 
 namespace Attrecto

@@ -1,4 +1,4 @@
-﻿namespace Attrecto.Dtos
+﻿namespace Attrecto.Dtos.User
 {
     public class CreateUserDto
     {
