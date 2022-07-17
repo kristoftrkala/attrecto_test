@@ -1,4 +1,5 @@
 using Attrecto.Data;
+using Attrecto.Exceptions;
 using Attrecto.IdentityServer;
 using Attrecto.Repositories;
 using IdentityModel;
@@ -74,6 +75,8 @@ if (app.Environment.IsDevelopment())
 app.UseIdentityServer();
 
 app.UseRouting();
+
+app.UseMiddleware<ExceptionHandler>();
 
 app.UseHttpsRedirection();
 
