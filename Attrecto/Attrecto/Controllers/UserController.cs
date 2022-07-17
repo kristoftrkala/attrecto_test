@@ -14,18 +14,20 @@ namespace Attrecto.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
+        private readonly IClaimsHelper _claimsHelper;
 
-        public UserController(IUserRepository userRepository, IMapper mapper)
+        public UserController(IUserRepository userRepository, IMapper mapper, IClaimsHelper claimsHelper)
         {
             _userRepository = userRepository;
             _mapper = mapper;
+            _claimsHelper = claimsHelper;
         }
 
         [HttpGet]
         [Authorize]
         public async Task<IEnumerable<GetUserDto>> GetAllUser()
         {
-            string role = ClaimsHelper.GetRoleFromClaim(HttpContext);            
+            string role = _claimsHelper.GetRoleFromClaim(HttpContext);            
             if(!role.Equals("Admin"))
             {
                 throw new UnauthorizedAccessException("Only admins can do this");
@@ -39,15 +41,14 @@ namespace Attrecto.Controllers
         [Authorize]
         public async Task<GetUserDto> GetUserById(int id)
         {
-            string role = ClaimsHelper.GetRoleFromClaim(HttpContext);
-            int claimId = ClaimsHelper.GetIdFromClaim(HttpContext);
+            string role = _claimsHelper.GetRoleFromClaim(HttpContext);
+            int claimId = _claimsHelper.GetIdFromClaim(HttpContext);
             if (!role.Equals("Admin") && claimId != id)
             {
                 throw new UnauthorizedAccessException("Only admins can do this");
             }
             var user = await _userRepository.GetUserByIdAsync(id);
             return _mapper.Map<GetUserDto>(user);
-
         }
 
         [HttpPost]
@@ -59,6 +60,7 @@ namespace Attrecto.Controllers
                 throw new ArgumentException("This email is already in use.");
             }
             var mappedUser = _mapper.Map<User>(createUserDto);
+            mappedUser.Password = BCrypt.Net.BCrypt.HashPassword(mappedUser.Password);
             await _userRepository.CreateUserAsync(mappedUser);
             await _userRepository.SaveChangesAsync();
             return Ok();
@@ -66,30 +68,53 @@ namespace Attrecto.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> AddUserFromAdmin(AddUserDto addUserDto)
+        public async Task<GetUserDto> AddUserFromAdmin(AddUserDto addUserDto)
         {
             if (_userRepository.CheckExistingEmail(addUserDto.Email))
             {
                 throw new ArgumentException("This email is already in use.");
             }
             var mappedUser = _mapper.Map<User>(addUserDto);
-            mappedUser.Password = PasswordGenerator.Generate();
-            await _userRepository.CreateUserAsync(mappedUser);
+            mappedUser.Password = BCrypt.Net.BCrypt.HashPassword(PasswordGenerator.Generate());
+            var result = await _userRepository.CreateUserAsync(mappedUser);
             await _userRepository.SaveChangesAsync();
-            return Ok();
+            return _mapper.Map<GetUserDto>(result);
+        }
+
+        [HttpPut("{id}")]
+        [Authorize]
+        public async Task<IActionResult> UpdateUser(int id, UpdateUserDto updateUserDto)
+        {
+            string role = _claimsHelper.GetRoleFromClaim(HttpContext);
+            int claimId = _claimsHelper.GetIdFromClaim(HttpContext);
+            if (!role.Equals("Admin") && claimId != updateUserDto.IdUser)
+            {
+                throw new UnauthorizedAccessException("Only admins can do this");
+            }
+
+            var current = await _userRepository.GetUserByIdAsync(id);
+            if (current == null)
+            {
+                throw new ArgumentException("User not found");
+            }
+
+            current.Name = updateUserDto.Name;
+            current.Email = updateUserDto.Email;
+            await _userRepository.UpdateUserAsync(current);
+            return NoContent();
         }
 
         [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            string role = ClaimsHelper.GetRoleFromClaim(HttpContext);
+            string role = _claimsHelper.GetRoleFromClaim(HttpContext);
             if (!role.Equals("Admin"))
             {
                 throw new UnauthorizedAccessException("Only admins can do this");
             }
             _userRepository.DeleteUser(id);
-            return Ok();
+            return NoContent();
         }
     }
 }

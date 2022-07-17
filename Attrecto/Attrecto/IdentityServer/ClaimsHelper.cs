@@ -2,9 +2,9 @@
 
 namespace Attrecto.IdentityServer
 {
-    public static class ClaimsHelper
+    public class ClaimsHelper : IClaimsHelper
     {
-        public static string GetRoleFromClaim(HttpContext httpContext)
+        public string GetRoleFromClaim(HttpContext httpContext)
         {
             var identity = httpContext.User.Identity as ClaimsIdentity;
             if (identity != null)
@@ -14,7 +14,7 @@ namespace Attrecto.IdentityServer
             return null;
         }
 
-        public static int GetIdFromClaim(HttpContext httpContext)
+        public int GetIdFromClaim(HttpContext httpContext)
         {
             var identity = httpContext.User.Identity as ClaimsIdentity;
             if (identity != null)

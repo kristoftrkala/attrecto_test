@@ -60,6 +60,7 @@ builder.Services.AddAuthorization(options =>
 });
 
 
+builder.Services.AddScoped<IClaimsHelper, ClaimsHelper>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();

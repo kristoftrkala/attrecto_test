@@ -6,7 +6,8 @@ namespace Attrecto.Repositories
     {
         Task<IEnumerable<User>> GetAllUserAsync();
         Task<User> GetUserByIdAsync(int id);
-        Task CreateUserAsync(User user);
+        Task<User> CreateUserAsync(User user);
+        Task UpdateUserAsync(User user);
         void DeleteUser(int id);
         Task SaveChangesAsync();
         bool CheckExistingEmail(string email);

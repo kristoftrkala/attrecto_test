@@ -10,6 +10,7 @@ namespace Attrecto
         {
             CreateMap<CreateUserDto, User>();
             CreateMap<AddUserDto, User>();
+            CreateMap<UpdateUserDto, User>();
             CreateMap<User, GetUserDto>();
         }
     }

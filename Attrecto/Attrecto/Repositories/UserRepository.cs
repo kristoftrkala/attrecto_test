@@ -22,16 +22,22 @@ namespace Attrecto.Repositories
             return await _context.Users.FirstOrDefaultAsync(u => u.IdUser == id);
         }
 
-        public async Task CreateUserAsync(User user)
+        public async Task<User> CreateUserAsync(User user)
         {
             if(user == null)
             {
                 throw new ArgumentException("User cannot be null");
             }
             var basicRole = _context.Roles.FirstOrDefault(x => x.Name.Equals("Basic"));
-            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             user.FkRoleNavigation = basicRole;
-            await _context.Users.AddAsync(user);
+            var result = await _context.Users.AddAsync(user);
+            return result.Entity;
+        }
+
+        public async Task UpdateUserAsync(User user)
+        {
+            _context.Entry(user).State = EntityState.Modified;
+            await SaveChangesAsync();
         }
 
         public void DeleteUser(int id)
