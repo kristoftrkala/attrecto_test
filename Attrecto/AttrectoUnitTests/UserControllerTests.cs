@@ -3,6 +3,7 @@ using Attrecto.Controllers;
 using Attrecto.Data;
 using Attrecto.Dtos;
 using Attrecto.Dtos.User;
+using Attrecto.EmailService;
 using Attrecto.IdentityServer;
 using Attrecto.Repositories;
 using AutoMapper;
@@ -18,6 +19,7 @@ namespace AttrectoUnitTests
     {
         private Mock<IUserRepository> userRepositoryMock;
         private Mock<IClaimsHelper> claimHelperMock;
+        private Mock<IEmailService> emailServiceMock;
         private IMapper mapper;
 
         [SetUp]
@@ -25,6 +27,7 @@ namespace AttrectoUnitTests
         {
             userRepositoryMock = new Mock<IUserRepository>();
             claimHelperMock = new Mock<IClaimsHelper>();
+            emailServiceMock = new Mock<IEmailService>();
             mapper = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MappingProfile());
@@ -42,7 +45,7 @@ namespace AttrectoUnitTests
             claimHelperMock.Setup(x => x.GetRoleFromClaim(It.IsAny<HttpContext>()))
                 .Returns("Basic");
 
-            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object);
+            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object, emailServiceMock.Object);
 
             var result = await controller.GetUserById(1);
 
@@ -67,7 +70,7 @@ namespace AttrectoUnitTests
             claimHelperMock.Setup(x => x.GetRoleFromClaim(It.IsAny<HttpContext>()))
                 .Returns("Basic");
 
-            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object);
+            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object, emailServiceMock.Object);
 
             var result = await controller.GetUserById(1);
 
@@ -92,7 +95,7 @@ namespace AttrectoUnitTests
             claimHelperMock.Setup(x => x.GetRoleFromClaim(It.IsAny<HttpContext>()))
                 .Returns("Basic");
 
-            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object);
+            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object, emailServiceMock.Object);
             Assert.ThrowsAsync<UnauthorizedAccessException>(async () => await controller.GetUserById(2));
         }
 
@@ -107,7 +110,7 @@ namespace AttrectoUnitTests
             claimHelperMock.Setup(x => x.GetRoleFromClaim(It.IsAny<HttpContext>()))
                 .Returns("Basic");
 
-            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object);
+            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object, emailServiceMock.Object);
             Assert.ThrowsAsync<UnauthorizedAccessException>(async () => await controller.GetAllUser());
         }
 
@@ -135,7 +138,7 @@ namespace AttrectoUnitTests
             claimHelperMock.Setup(x => x.GetRoleFromClaim(It.IsAny<HttpContext>()))
                 .Returns("Admin");
 
-            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object);
+            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object, emailServiceMock.Object);
 
             var result = await controller.GetAllUser();
 
@@ -164,7 +167,7 @@ namespace AttrectoUnitTests
             claimHelperMock.Setup(x => x.GetRoleFromClaim(It.IsAny<HttpContext>()))
                 .Returns("Admin");
 
-            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object);
+            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object, emailServiceMock.Object);
 
             var result = await controller.AddUserFromAdmin(addUserDto);
 
@@ -194,7 +197,7 @@ namespace AttrectoUnitTests
             claimHelperMock.Setup(x => x.GetRoleFromClaim(It.IsAny<HttpContext>()))
                 .Returns("Admin");
 
-            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object);
+            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object, emailServiceMock.Object);
 
             var result = await controller.UpdateUser(1, updateUserDto);
 
@@ -216,7 +219,7 @@ namespace AttrectoUnitTests
             claimHelperMock.Setup(x => x.GetRoleFromClaim(It.IsAny<HttpContext>()))
                 .Returns("Admin");
 
-            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object);
+            var controller = new UserController(userRepositoryMock.Object, mapper, claimHelperMock.Object, emailServiceMock.Object);
             var result = await controller.DeleteUser(existingUser.IdUser);
 
             result.Should().BeOfType<NoContentResult>();

@@ -1,5 +1,6 @@
 ﻿using Attrecto.Data;
 using Attrecto.Dtos.Todo;
+using Attrecto.EmailService;
 using Attrecto.IdentityServer;
 using Attrecto.Repositories;
 using AutoMapper;
@@ -15,12 +16,14 @@ namespace Attrecto.Controllers
         private readonly ITodoRepository _todoRepository;
         private readonly IMapper _mapper;
         private readonly IClaimsHelper _claimsHelper;
+        private readonly IEmailService _emailService;
 
-        public TodoController(ITodoRepository todoRepository, IMapper mapper, IClaimsHelper claimsHelper)
+        public TodoController(ITodoRepository todoRepository, IMapper mapper, IClaimsHelper claimsHelper, IEmailService emailService)
         {
             _todoRepository = todoRepository;
             _mapper = mapper;
             _claimsHelper = claimsHelper;
+            _emailService = emailService;
         }
 
         [HttpGet]
@@ -77,7 +80,7 @@ namespace Attrecto.Controllers
             }
             var mappedTodo = _mapper.Map<Todo>(todoDto);
             var result = await _todoRepository.CreateTodoAsync(mappedTodo);
-            await _todoRepository.SaveChangesAsync();
+            await _emailService.SendEmailAsync(result.FkUserNavigation.Email, "New TODO", $"A new TODO has been assigned to you. Let's check it.");
             return _mapper.Map<GetTodoDto>(result);
         }
 

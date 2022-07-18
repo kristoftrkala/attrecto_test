@@ -9,6 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
 using Serilog;
 using Attrecto.Repositories;
+using Attrecto.EmailService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,7 @@ builder.Host.UseSerilog((ctx, lc) => lc
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddControllers();
-
+builder.Services.AddCors();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -69,6 +70,7 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddScoped<IClaimsHelper, ClaimsHelper>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITodoRepository, TodoRepository>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 var app = builder.Build();
 
@@ -77,6 +79,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(x => x
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 app.UseIdentityServer();
 

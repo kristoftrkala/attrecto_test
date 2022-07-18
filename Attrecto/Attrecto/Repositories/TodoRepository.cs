@@ -19,7 +19,7 @@ namespace Attrecto.Repositories
 
         public async Task<Todo> GetTodoByIdAsync(int todoId)
         {
-            return await _context.Todos.FirstOrDefaultAsync(u => u.IdTodo == todoId);
+            return await _context.Todos.Include(t => t.FkUserNavigation).FirstOrDefaultAsync(u => u.IdTodo == todoId);
         }
 
         public async Task<IEnumerable<Todo>> GetTodosForUserAsync(int userId)
@@ -35,7 +35,9 @@ namespace Attrecto.Repositories
             }
             todo.CreationDate = DateTime.Now;
             var result = await _context.Todos.AddAsync(todo);
-            return result.Entity;
+            await SaveChangesAsync();
+            var createdTodo = await GetTodoByIdAsync(result.Entity.IdTodo);
+            return createdTodo;
         }
 
         public async Task UpdateTodoAsync(Todo todo)

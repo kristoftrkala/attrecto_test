@@ -1,5 +1,6 @@
 ﻿using Attrecto.Data;
 using Attrecto.Dtos.User;
+using Attrecto.EmailService;
 using Attrecto.IdentityServer;
 using Attrecto.Repositories;
 using AutoMapper;
@@ -15,12 +16,14 @@ namespace Attrecto.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly IClaimsHelper _claimsHelper;
+        private readonly IEmailService _emailService;
 
-        public UserController(IUserRepository userRepository, IMapper mapper, IClaimsHelper claimsHelper)
+        public UserController(IUserRepository userRepository, IMapper mapper, IClaimsHelper claimsHelper, IEmailService emailService)
         {
             _userRepository = userRepository;
             _mapper = mapper;
             _claimsHelper = claimsHelper;
+            _emailService = emailService;
         }
 
         [HttpGet]
@@ -75,9 +78,11 @@ namespace Attrecto.Controllers
                 throw new ArgumentException("This email is already in use.");
             }
             var mappedUser = _mapper.Map<User>(addUserDto);
-            mappedUser.Password = BCrypt.Net.BCrypt.HashPassword(PasswordGenerator.Generate());
+            var generatedPassword = PasswordGenerator.Generate();
+            mappedUser.Password = BCrypt.Net.BCrypt.HashPassword(generatedPassword);
             var result = await _userRepository.CreateUserAsync(mappedUser);
             await _userRepository.SaveChangesAsync();
+            await _emailService.SendEmailAsync(result.Email, "New account", $"A new account has been created for you by one of our admins. Your password is: {generatedPassword}");
             return _mapper.Map<GetUserDto>(result);
         }
 
