@@ -24,7 +24,7 @@ namespace Attrecto.Repositories
 
         public async Task<User> CreateUserAsync(User user)
         {
-            if(user == null)
+            if (user == null)
             {
                 throw new ArgumentException("User cannot be null");
             }
@@ -43,10 +43,13 @@ namespace Attrecto.Repositories
         public void DeleteUser(int id)
         {
             var user = _context.Users.FirstOrDefault(x => x.IdUser == id);
-            if (user != null)
-                _context.Users.Remove(user);
-            else
+            if (user == null)
                 throw new ArgumentException("User not found");
+            else
+            {
+                _context.Users.Remove(user);
+                _context.SaveChanges();
+            }
         }
 
         public async Task SaveChangesAsync()

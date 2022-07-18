@@ -1,7 +1,6 @@
 using Attrecto.Data;
 using Attrecto.Exceptions;
 using Attrecto.IdentityServer;
-using Attrecto.Repositories;
 using IdentityModel;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
 using Serilog;
+using Attrecto.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -68,6 +68,7 @@ builder.Services.AddAuthorization(options =>
 
 builder.Services.AddScoped<IClaimsHelper, ClaimsHelper>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ITodoRepository, TodoRepository>();
 
 var app = builder.Build();
 
