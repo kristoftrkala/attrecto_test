@@ -22,4 +22,10 @@
     <ProjectReference Include="..\Attrecto\Attrecto.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Images\test_image_to_upload.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
