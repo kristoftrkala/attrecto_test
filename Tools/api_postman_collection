@@ -1,0 +1,651 @@
+{
+	"info": {
+		"_postman_id": "463d2b29-262b-46d0-9949-a3ed3d2af299",
+		"name": "Attrecto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login with normal test user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "attrecto_api offline_access",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "client",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "kgflsdadjsadnfad43snfdsak?j#fdsa",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "test@test.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:7226/connect/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login with admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "attrecto_api offline_access",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "client",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "kgflsdadjsadnfad43snfdsak?j#fdsa",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin@admin.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:7226/connect/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgxNzA2NzYsImV4cCI6MTY1ODE3NDI3NiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE2NTgxNzA2NzYsImlkcCI6ImxvY2FsIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6IkJhc2ljIiwianRpIjoiQkFFNjI0OTIwN0NFQkU0MjQzNUI1QTExODA2MDBBMTQiLCJpYXQiOjE2NTgxNzA2NzYsInNjb3BlIjpbImF0dHJlY3RvX2FwaSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJjdXN0b20iXX0.nMzcKngE3g40CQXpzLpLhGHbP4DaqEvW3ohKP3NQYxV6OlZVvRac3onirqzcgG3i-LGpnxnslurLhyVQ86RLUwHx08l3hupUS6d4F1lKOPWFJycau4kofpRhFseZiQeRBw9uyIje_-GGUFPft2_p7mRVP_Al-FQ2MYXOI9ZOk4RhjeHwO4_9yVM528nbHbkIL63rVtdL4YfQm8deqNd-me6qN3QBjS1LdYj-ecvsfCJv8s6z_zyzhKrBlg6RwotSTc0W5r3HlQLf28qSfYM-tWWGIw19S0VdisNbmjNLm4NSxIOzu0IOcKnzgmDp5d5kEXKuCvJ-vfOjZ5UCeEzv2g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7226/user",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgxNzA2NzYsImV4cCI6MTY1ODE3NDI3NiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE2NTgxNzA2NzYsImlkcCI6ImxvY2FsIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6IkJhc2ljIiwianRpIjoiQkFFNjI0OTIwN0NFQkU0MjQzNUI1QTExODA2MDBBMTQiLCJpYXQiOjE2NTgxNzA2NzYsInNjb3BlIjpbImF0dHJlY3RvX2FwaSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJjdXN0b20iXX0.nMzcKngE3g40CQXpzLpLhGHbP4DaqEvW3ohKP3NQYxV6OlZVvRac3onirqzcgG3i-LGpnxnslurLhyVQ86RLUwHx08l3hupUS6d4F1lKOPWFJycau4kofpRhFseZiQeRBw9uyIje_-GGUFPft2_p7mRVP_Al-FQ2MYXOI9ZOk4RhjeHwO4_9yVM528nbHbkIL63rVtdL4YfQm8deqNd-me6qN3QBjS1LdYj-ecvsfCJv8s6z_zyzhKrBlg6RwotSTc0W5r3HlQLf28qSfYM-tWWGIw19S0VdisNbmjNLm4NSxIOzu0IOcKnzgmDp5d5kEXKuCvJ-vfOjZ5UCeEzv2g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7226/user/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgwNTU0NTAsImV4cCI6MTY1ODA1OTA1MCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE2NTgwNTU0NDksImlkcCI6ImxvY2FsIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6IkJhc2ljIiwianRpIjoiRjY3MTVGMDVGNzlFMUI1Njc3QzgwQkU1QTIzNEY0MTMiLCJpYXQiOjE2NTgwNTU0NDksInNjb3BlIjpbImF0dHJlY3RvX2FwaSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJjdXN0b20iXX0.IZZEGrKQLPyOGvx1aa5N2VT9Bepq_Tw_mBiSFIaN7obf99DvEagJ0D_tDKVNvZBre3ZeNvspBauds4wnipyPbhd6MAVhCeDFmXEkjeao4BwaXSb_J8PUe6UuNRr34J5BkfKQcWoSiq2YMENErEDkfeGQ0M_Y5kHJUqRx7keeLXoqZiEFoMXmixxeSrt1joF2qndNSFjy_gurWoD3AankSH08HaXviLQM70Mu_psb8wLAtB_N-iLTqm_cjdj4jhT9Uu3VmJUTH6pipHWdDVo4yeohuUkrJRpp3bx2cStK-ntth6KbrU4VYhzVMKTEtSX6EZA76tq-QOc15sJRHzqO4w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idUser\": 1,\r\n  \"email\": \"test@test.com\",\r\n  \"name\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7226/user/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user(only for admins)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgwNjEzMzgsImV4cCI6MTY1ODA2NDkzOCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE2NTgwNjEzMzgsImlkcCI6ImxvY2FsIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6IkJhc2ljIiwianRpIjoiOTgzMDNGQjY5NEQ2QzkxNzRCQjEwNjEwNEZDNENGMTYiLCJpYXQiOjE2NTgwNjEzMzgsInNjb3BlIjpbImF0dHJlY3RvX2FwaSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJjdXN0b20iXX0.OW-a2lUVXw2hEnN2e_5xnmItpN80ICIhT8M9SAAXA5y6RZdiiLDK_iv7ZI62wH9ojRfvE7RHu5-238Hg2RJoM9JXE0pX1sGIPYlPY3x5eSdQrnLXCTLwzNgDu2m_7J_Aq8_qM9QJnvmj1XFNAlaCWmWff_QpUnQR66inG-N39nw2OoEr3tuwST6fpF6eoozj2o8QT74UTBSScYEytTteEKeA0jzgdh1Ena7wCfCoTJlhMO2wE21NgeJDOHtfCu0lt1gpTuVxjJ1VrNQTfyO-6DdTA7rikFiMXhhSgfbAeLwzKP8u31gjO5gaXanCYo0KVlboJvxQYdWjaBJXKJ6bqQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"test@test.com\",\r\n  \"name\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7226/user",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgwNjEzMzgsImV4cCI6MTY1ODA2NDkzOCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE2NTgwNjEzMzgsImlkcCI6ImxvY2FsIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6IkJhc2ljIiwianRpIjoiOTgzMDNGQjY5NEQ2QzkxNzRCQjEwNjEwNEZDNENGMTYiLCJpYXQiOjE2NTgwNjEzMzgsInNjb3BlIjpbImF0dHJlY3RvX2FwaSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJjdXN0b20iXX0.OW-a2lUVXw2hEnN2e_5xnmItpN80ICIhT8M9SAAXA5y6RZdiiLDK_iv7ZI62wH9ojRfvE7RHu5-238Hg2RJoM9JXE0pX1sGIPYlPY3x5eSdQrnLXCTLwzNgDu2m_7J_Aq8_qM9QJnvmj1XFNAlaCWmWff_QpUnQR66inG-N39nw2OoEr3tuwST6fpF6eoozj2o8QT74UTBSScYEytTteEKeA0jzgdh1Ena7wCfCoTJlhMO2wE21NgeJDOHtfCu0lt1gpTuVxjJ1VrNQTfyO-6DdTA7rikFiMXhhSgfbAeLwzKP8u31gjO5gaXanCYo0KVlboJvxQYdWjaBJXKJ6bqQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"test@test.com\",\r\n  \"password\": 1234,\r\n  \"name\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7226/user/register",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgxNzEyNTAsImV4cCI6MTY1ODE3NDg1MCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjIiLCJhdXRoX3RpbWUiOjE2NTgxNzEyNTAsImlkcCI6ImxvY2FsIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJyb2xlIjoiQWRtaW4iLCJqdGkiOiJFN0EyQ0I4QjJDQUYyMzJGNDk0NkM0Q0YzMTE3RkE2QyIsImlhdCI6MTY1ODE3MTI1MCwic2NvcGUiOlsiYXR0cmVjdG9fYXBpIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImN1c3RvbSJdfQ.xWPoOKriqy_pf2bCSkmcDLnHppZX-J_HUOSpcJm-Inq7YB1kiI6qTi5_xIFV8Fgr_CKFCg3s-O0LU7OwfTzutt8ZL6xRKSpvu8Vh8KsmwZ3Acfc95drZnJzlfkvf4YbYCs5Z51DRi-eAd_aH28xQkZMAu8e-L2whjvFSCTHRtLiuKUZ0tubWPtWQ_pxeV-YzokMvVATHSr-MshAzBMo4WnDc9oO6sITx3wODr3tNmmhKnG4uXwpxnGmdq5U2ydVaVGoo1eIWivvZA6yLgHznlqTARiKx1IbHbxALbkaNxiuO7U7iPLRgLmCXrdbTbLLlM7uT2Qm3OPm60rzlaWn_8g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"test2delete@test.com\",\r\n  \"name\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7226/user/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgyMjcxODksImV4cCI6MTY1ODIzMDc4OSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE2NTgyMjcxODksImlkcCI6ImxvY2FsIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6IkJhc2ljIiwianRpIjoiMzI1MTU1MDIxMTg4OEYxMzc5RTI1QzZFNEM3QTRENTYiLCJpYXQiOjE2NTgyMjcxODksInNjb3BlIjpbImF0dHJlY3RvX2FwaSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJjdXN0b20iXX0.KJoKWJFr-E8eLJybMz0K9YPyk-MCCbP8MqC9AN4U1QFEZbv_oTl2dfJGnfq96e9UaYGMk1y4NJKuTRtzaqJnkLpQJJ8Nb3RzKwn-hSJ6dVJfFOCMzozQWUjTFrh4COgGKWTchmTn3KZih1Inrc06A0eVvQO2JDhkViERNDrrUNsUozeKBCx4WtVSZdDbzxB5gJuw6NEqCPXQVoFWTEVI7FpZ-b2xoxNHU1H-n6LeHun8clfPKk1GnegJkjBdPyzgVqjOG3h9B9-0f-dXzp7lTYT15XYb49lp9EAwaXrjxnT8NBRdEFlbIn7kEpI3xxpWjEl-MUif7zKtfT_HDdjmxw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Kristof/Downloads/Telegram Desktop/image_2022-07-18_10-52-34.png"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7226/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgyMjcxODksImV4cCI6MTY1ODIzMDc4OSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE2NTgyMjcxODksImlkcCI6ImxvY2FsIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6IkJhc2ljIiwianRpIjoiMzI1MTU1MDIxMTg4OEYxMzc5RTI1QzZFNEM3QTRENTYiLCJpYXQiOjE2NTgyMjcxODksInNjb3BlIjpbImF0dHJlY3RvX2FwaSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJjdXN0b20iXX0.KJoKWJFr-E8eLJybMz0K9YPyk-MCCbP8MqC9AN4U1QFEZbv_oTl2dfJGnfq96e9UaYGMk1y4NJKuTRtzaqJnkLpQJJ8Nb3RzKwn-hSJ6dVJfFOCMzozQWUjTFrh4COgGKWTchmTn3KZih1Inrc06A0eVvQO2JDhkViERNDrrUNsUozeKBCx4WtVSZdDbzxB5gJuw6NEqCPXQVoFWTEVI7FpZ-b2xoxNHU1H-n6LeHun8clfPKk1GnegJkjBdPyzgVqjOG3h9B9-0f-dXzp7lTYT15XYb49lp9EAwaXrjxnT8NBRdEFlbIn7kEpI3xxpWjEl-MUif7zKtfT_HDdjmxw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7226/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all todos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgxNzA2NzYsImV4cCI6MTY1ODE3NDI3NiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE2NTgxNzA2NzYsImlkcCI6ImxvY2FsIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6IkJhc2ljIiwianRpIjoiQkFFNjI0OTIwN0NFQkU0MjQzNUI1QTExODA2MDBBMTQiLCJpYXQiOjE2NTgxNzA2NzYsInNjb3BlIjpbImF0dHJlY3RvX2FwaSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJjdXN0b20iXX0.nMzcKngE3g40CQXpzLpLhGHbP4DaqEvW3ohKP3NQYxV6OlZVvRac3onirqzcgG3i-LGpnxnslurLhyVQ86RLUwHx08l3hupUS6d4F1lKOPWFJycau4kofpRhFseZiQeRBw9uyIje_-GGUFPft2_p7mRVP_Al-FQ2MYXOI9ZOk4RhjeHwO4_9yVM528nbHbkIL63rVtdL4YfQm8deqNd-me6qN3QBjS1LdYj-ecvsfCJv8s6z_zyzhKrBlg6RwotSTc0W5r3HlQLf28qSfYM-tWWGIw19S0VdisNbmjNLm4NSxIOzu0IOcKnzgmDp5d5kEXKuCvJ-vfOjZ5UCeEzv2g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7226/todo",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get todo by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgxNzA2NzYsImV4cCI6MTY1ODE3NDI3NiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE2NTgxNzA2NzYsImlkcCI6ImxvY2FsIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6IkJhc2ljIiwianRpIjoiQkFFNjI0OTIwN0NFQkU0MjQzNUI1QTExODA2MDBBMTQiLCJpYXQiOjE2NTgxNzA2NzYsInNjb3BlIjpbImF0dHJlY3RvX2FwaSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJjdXN0b20iXX0.nMzcKngE3g40CQXpzLpLhGHbP4DaqEvW3ohKP3NQYxV6OlZVvRac3onirqzcgG3i-LGpnxnslurLhyVQ86RLUwHx08l3hupUS6d4F1lKOPWFJycau4kofpRhFseZiQeRBw9uyIje_-GGUFPft2_p7mRVP_Al-FQ2MYXOI9ZOk4RhjeHwO4_9yVM528nbHbkIL63rVtdL4YfQm8deqNd-me6qN3QBjS1LdYj-ecvsfCJv8s6z_zyzhKrBlg6RwotSTc0W5r3HlQLf28qSfYM-tWWGIw19S0VdisNbmjNLm4NSxIOzu0IOcKnzgmDp5d5kEXKuCvJ-vfOjZ5UCeEzv2g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7226/todo/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"todo",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get todos for user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgxNzA2NzYsImV4cCI6MTY1ODE3NDI3NiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE2NTgxNzA2NzYsImlkcCI6ImxvY2FsIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6IkJhc2ljIiwianRpIjoiQkFFNjI0OTIwN0NFQkU0MjQzNUI1QTExODA2MDBBMTQiLCJpYXQiOjE2NTgxNzA2NzYsInNjb3BlIjpbImF0dHJlY3RvX2FwaSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJjdXN0b20iXX0.nMzcKngE3g40CQXpzLpLhGHbP4DaqEvW3ohKP3NQYxV6OlZVvRac3onirqzcgG3i-LGpnxnslurLhyVQ86RLUwHx08l3hupUS6d4F1lKOPWFJycau4kofpRhFseZiQeRBw9uyIje_-GGUFPft2_p7mRVP_Al-FQ2MYXOI9ZOk4RhjeHwO4_9yVM528nbHbkIL63rVtdL4YfQm8deqNd-me6qN3QBjS1LdYj-ecvsfCJv8s6z_zyzhKrBlg6RwotSTc0W5r3HlQLf28qSfYM-tWWGIw19S0VdisNbmjNLm4NSxIOzu0IOcKnzgmDp5d5kEXKuCvJ-vfOjZ5UCeEzv2g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7226/todo/user/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"todo",
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add todo by user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgxNzA2NzYsImV4cCI6MTY1ODE3NDI3NiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE2NTgxNzA2NzYsImlkcCI6ImxvY2FsIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6IkJhc2ljIiwianRpIjoiQkFFNjI0OTIwN0NFQkU0MjQzNUI1QTExODA2MDBBMTQiLCJpYXQiOjE2NTgxNzA2NzYsInNjb3BlIjpbImF0dHJlY3RvX2FwaSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJjdXN0b20iXX0.nMzcKngE3g40CQXpzLpLhGHbP4DaqEvW3ohKP3NQYxV6OlZVvRac3onirqzcgG3i-LGpnxnslurLhyVQ86RLUwHx08l3hupUS6d4F1lKOPWFJycau4kofpRhFseZiQeRBw9uyIje_-GGUFPft2_p7mRVP_Al-FQ2MYXOI9ZOk4RhjeHwO4_9yVM528nbHbkIL63rVtdL4YfQm8deqNd-me6qN3QBjS1LdYj-ecvsfCJv8s6z_zyzhKrBlg6RwotSTc0W5r3HlQLf28qSfYM-tWWGIw19S0VdisNbmjNLm4NSxIOzu0IOcKnzgmDp5d5kEXKuCvJ-vfOjZ5UCeEzv2g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"test todo\",\r\n    \"Description\": \"test description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7226/todo",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add todo by admin for user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgxNzEyNTAsImV4cCI6MTY1ODE3NDg1MCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjIiLCJhdXRoX3RpbWUiOjE2NTgxNzEyNTAsImlkcCI6ImxvY2FsIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJyb2xlIjoiQWRtaW4iLCJqdGkiOiJFN0EyQ0I4QjJDQUYyMzJGNDk0NkM0Q0YzMTE3RkE2QyIsImlhdCI6MTY1ODE3MTI1MCwic2NvcGUiOlsiYXR0cmVjdG9fYXBpIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImN1c3RvbSJdfQ.xWPoOKriqy_pf2bCSkmcDLnHppZX-J_HUOSpcJm-Inq7YB1kiI6qTi5_xIFV8Fgr_CKFCg3s-O0LU7OwfTzutt8ZL6xRKSpvu8Vh8KsmwZ3Acfc95drZnJzlfkvf4YbYCs5Z51DRi-eAd_aH28xQkZMAu8e-L2whjvFSCTHRtLiuKUZ0tubWPtWQ_pxeV-YzokMvVATHSr-MshAzBMo4WnDc9oO6sITx3wODr3tNmmhKnG4uXwpxnGmdq5U2ydVaVGoo1eIWivvZA6yLgHznlqTARiKx1IbHbxALbkaNxiuO7U7iPLRgLmCXrdbTbLLlM7uT2Qm3OPm60rzlaWn_8g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"IdUser\": 1,\r\n    \"Name\": \"test todo\",\r\n    \"Description\": \"test description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7226/todo/addByAdmin",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"todo",
+						"addByAdmin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update todo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgxNzEyNTAsImV4cCI6MTY1ODE3NDg1MCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjIiLCJhdXRoX3RpbWUiOjE2NTgxNzEyNTAsImlkcCI6ImxvY2FsIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJyb2xlIjoiQWRtaW4iLCJqdGkiOiJFN0EyQ0I4QjJDQUYyMzJGNDk0NkM0Q0YzMTE3RkE2QyIsImlhdCI6MTY1ODE3MTI1MCwic2NvcGUiOlsiYXR0cmVjdG9fYXBpIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImN1c3RvbSJdfQ.xWPoOKriqy_pf2bCSkmcDLnHppZX-J_HUOSpcJm-Inq7YB1kiI6qTi5_xIFV8Fgr_CKFCg3s-O0LU7OwfTzutt8ZL6xRKSpvu8Vh8KsmwZ3Acfc95drZnJzlfkvf4YbYCs5Z51DRi-eAd_aH28xQkZMAu8e-L2whjvFSCTHRtLiuKUZ0tubWPtWQ_pxeV-YzokMvVATHSr-MshAzBMo4WnDc9oO6sITx3wODr3tNmmhKnG4uXwpxnGmdq5U2ydVaVGoo1eIWivvZA6yLgHznlqTARiKx1IbHbxALbkaNxiuO7U7iPLRgLmCXrdbTbLLlM7uT2Qm3OPm60rzlaWn_8g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"IdTodo\": 2,\r\n    \"Name\": \"test todo update\",\r\n    \"Description\": \"test description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7226/todo/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"todo",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete todo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzQzAwRkQ1MzNBMkNGQ0ZCRkE1RDA2QkQyNjEwNEYxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2NTgxNzEyNTAsImV4cCI6MTY1ODE3NDg1MCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNiIsImF1ZCI6ImF0dHJlY3RvX2FwaSIsImNsaWVudF9pZCI6ImNsaWVudCIsInN1YiI6IjIiLCJhdXRoX3RpbWUiOjE2NTgxNzEyNTAsImlkcCI6ImxvY2FsIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJyb2xlIjoiQWRtaW4iLCJqdGkiOiJFN0EyQ0I4QjJDQUYyMzJGNDk0NkM0Q0YzMTE3RkE2QyIsImlhdCI6MTY1ODE3MTI1MCwic2NvcGUiOlsiYXR0cmVjdG9fYXBpIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImN1c3RvbSJdfQ.xWPoOKriqy_pf2bCSkmcDLnHppZX-J_HUOSpcJm-Inq7YB1kiI6qTi5_xIFV8Fgr_CKFCg3s-O0LU7OwfTzutt8ZL6xRKSpvu8Vh8KsmwZ3Acfc95drZnJzlfkvf4YbYCs5Z51DRi-eAd_aH28xQkZMAu8e-L2whjvFSCTHRtLiuKUZ0tubWPtWQ_pxeV-YzokMvVATHSr-MshAzBMo4WnDc9oO6sITx3wODr3tNmmhKnG4uXwpxnGmdq5U2ydVaVGoo1eIWivvZA6yLgHznlqTARiKx1IbHbxALbkaNxiuO7U7iPLRgLmCXrdbTbLLlM7uT2Qm3OPm60rzlaWn_8g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"IdTodo\": 2,\r\n    \"Name\": \"test todo update\",\r\n    \"Description\": \"test description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7226/todo/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"todo",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
